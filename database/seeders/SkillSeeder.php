@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Skill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,16 @@ class SkillSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $skills = [
+            'php', 'laravel', 'symfony', 'mysql', 'postgres',
+            'python', 'java', 'javascript', 'html', 'css',
+            'node.js', 'c#', 'c', 'c++', 'mongodb', 'redis'
+        ];
+
+        foreach ($skills as $skill) {
+            Skill::create([
+                'name' => $skill
+            ]);
+        }
     }
 }
