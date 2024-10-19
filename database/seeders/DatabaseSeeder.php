@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             EducationSeeder::class,
             ExperienceSeeder::class,
+            LanguageSeeder::class,
         ]);
     }
 }
