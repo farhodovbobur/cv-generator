@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             EducationSeeder::class,
             ExperienceSeeder::class,
             LanguageSeeder::class,
+            LevelSeeder::class,
         ]);
     }
 }

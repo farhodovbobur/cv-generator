@@ -18,7 +18,7 @@ class LanguageFactory extends Factory
     {
 
         return [
-            'language' => fake()->languageCode()
+            'language' => fake()->unique()->languageCode()
         ];
     }
 }
