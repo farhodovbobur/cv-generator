@@ -17,7 +17,8 @@ class SocialNetworkFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->word(),
+            'url' => fake()->url()
         ];
     }
 }
