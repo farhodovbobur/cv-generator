@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             LevelSeeder::class,
             SocialNetworkStudentSeeder::class,
+            SkillStudentSeeder::class,
         ]);
     }
 }

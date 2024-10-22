@@ -16,4 +16,9 @@ class Student extends Model
         return $this->belongsToMany(SocialNetwork::class)
             ->withPivot('username');
     }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class);
+    }
 }
