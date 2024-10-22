@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\SocialNetwork;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class SocialNetworkStudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'social_network_id' => SocialNetwork::factory(),
+            'student_id'        => Student::factory(),
+            'username'          => fake()->userName(),
         ];
     }
 }
