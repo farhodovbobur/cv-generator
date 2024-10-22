@@ -21,4 +21,10 @@ class Student extends Model
     {
         return $this->belongsToMany(Skill::class);
     }
+
+    public function languages(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class)
+            ->withPivot('level_id');
+    }
 }
