@@ -79,7 +79,7 @@ class StudentController extends Controller
 
         return response()->json([
             'message' => 'Student updated successfully.',
-            'data' => $studentDto
+            'data'    => $studentDto
         ], 202);
     }
 

@@ -11,6 +11,10 @@ class SocialNetwork extends Model
     /** @use HasFactory<\Database\Factories\SocialNetworkFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'url'
+    ];
     public function students(): BelongsToMany
     {
         return $this->belongsToMany(Student::class)
