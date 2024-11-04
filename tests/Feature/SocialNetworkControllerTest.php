@@ -50,7 +50,7 @@ class SocialNetworkControllerTest extends TestCase
     public function test_show_returns_network_with_unsuccessful_response()
     {
         SocialNetwork::factory()->create();
-        $response = $this->getJson("/api/categories/999");
+        $response = $this->getJson("/api/networks/999");
         $response->assertStatus(404);
     }
 

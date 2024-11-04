@@ -54,7 +54,7 @@ class StudentControllerTest extends TestCase
     public function test_show_returns_student_with_unsuccessful_response()
     {
         Student::factory()->create();
-        $response = $this->getJson("/api/categories/999");
+        $response = $this->getJson("/api/students/999");
         $response->assertStatus(404);
     }
 
