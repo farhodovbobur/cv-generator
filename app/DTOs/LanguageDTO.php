@@ -4,22 +4,22 @@ namespace App\DTOs;
 
 use Spatie\DataTransferObject\DataTransferObject;
 
-class LevelDTO extends DataTransferObject
+class LanguageDTO extends DataTransferObject
 {
     public int    $id;
-    public string $level;
+    public string $language;
 
     public function __serialize(): array
     {
         return [
-            'id'    => $this->id,
-            'level' => $this->level
+            'id'       => $this->id,
+            'language' => $this->language
         ];
     }
 
     public function __unserialize(array $data): void
     {
-        $this->id    = $data['id'];
-        $this->level = $data['level'];
+        $this->id       = $data['id'];
+        $this->language = $data['language'];
     }
 }
