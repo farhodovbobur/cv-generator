@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\DTOs\LevelDTO;
 use App\Http\Controllers\Controller;
+use App\Models\Level;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LevelController extends Controller
@@ -10,9 +13,13 @@ class LevelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $levels = Level::all();
+
+        $levelDTOs = $levels->map(fn($level) => new LevelDTO($level->toArray()));
+
+        return response()->json($levelDTOs);
     }
 
     /**
@@ -26,9 +33,13 @@ class LevelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        $level = $this->findOrFail($id);
+
+        $levelDTO = new LevelDTO($level->toArray());
+
+        return response()->json($levelDTO);
     }
 
     /**
@@ -45,5 +56,18 @@ class LevelController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function findOrFail(string $id): Level
+    {
+        $level = Level::query()->find($id);
+
+        if (!$level) {
+            abort(response()->json([
+                'message' => 'Level not found'
+            ], 404));
+        }
+
+        return $level;
     }
 }
