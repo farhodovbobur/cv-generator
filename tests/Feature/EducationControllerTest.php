@@ -11,6 +11,7 @@ use Tests\TestCase;
 class EducationControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
@@ -40,13 +41,13 @@ class EducationControllerTest extends TestCase
     {
         Student::factory(5)->create();
         $education = Education::factory()->create();
-        $response   = $this->getJson("/api/educations/$education->id");
+        $response  = $this->getJson("/api/educations/$education->id");
 
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'id'         => $education->id,
                 'student_id' => $education->student_id,
-                'name'    => $education->name,
+                'name'       => $education->name,
             ]);
     }
 
@@ -64,13 +65,13 @@ class EducationControllerTest extends TestCase
         $student_id = Student::query()->first()->id;
         $response   = $this->postJson('/api/educations', [
             'student_id' => $student_id,
-            'name'    => 'Education name',
+            'name'       => 'Education name',
         ]);
 
         $response->assertStatus(201)
             ->assertJsonFragment([
                 'student_id' => $student_id,
-                'name'    => 'Education name',
+                'name'       => 'Education name',
             ]);
     }
 
@@ -79,7 +80,7 @@ class EducationControllerTest extends TestCase
         Student::factory(5)->create();
         $response = $this->postJson('/api/educations', [
             'student_id' => '',
-            'name'    => '',
+            'name'       => '',
         ]);
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['student_id', 'name']);
@@ -89,7 +90,7 @@ class EducationControllerTest extends TestCase
     {
         Student::factory(5)->create();
         $education = Education::factory()->create();
-        $response   = $this->putJson("/api/educations/$education->id", [
+        $response  = $this->putJson("/api/educations/$education->id", [
             'name' => 'Education name',
         ]);
 
@@ -117,7 +118,7 @@ class EducationControllerTest extends TestCase
     {
         Student::factory(5)->create();
         $education = Education::factory()->create();
-        $response   = $this->deleteJson("/api/educations/$education->id");
+        $response  = $this->deleteJson("/api/educations/$education->id");
         $response->assertStatus(202);
         $this->assertDatabaseMissing('education', [
             'id' => $education->id,
