@@ -7,7 +7,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 class StudentDTO extends DataTransferObject
 {
     public int     $id;
-    public ?string $nt_id;
+    public ?int    $nt_id;
     public string  $first_name;
     public string  $last_name;
     public ?string $middle_name; // Nullable
